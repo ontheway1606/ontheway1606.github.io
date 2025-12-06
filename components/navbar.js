@@ -1,78 +1,65 @@
-class CustomAiControls extends HTMLElement {
+class CustomNavbar extends HTMLElement {
     connectedCallback() {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
             <style>
-                .generation-card {
-                    background: rgba(255, 255, 255, 0.03);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    transition: all 0.3s ease;
+                nav {
+                    background: rgba(15, 23, 42, 0.8);
+                    backdrop-filter: blur(10px);
+                    -webkit-backdrop-filter: blur(10px);
                 }
                 
-                .generation-card:hover {
-                    background: rgba(255, 255, 255, 0.05);
-                    border-color: rgba(168, 85, 247, 0.3);
+                .nav-link {
+                    transition: all 0.2s ease;
+                    position: relative;
                 }
                 
-                textarea {
-                    background: rgba(255, 255, 255, 0.05);
-                    resize: none;
+                .nav-link:hover {
+                    color: #a855f7;
                 }
                 
-                textarea:focus {
-                    outline: none;
-                    border-color: rgba(168, 85, 247, 0.5);
+                .nav-link::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -2px;
+                    left: 0;
+                    width: 0;
+                    height: 2px;
+                    background: #a855f7;
+                    transition: width 0.3s ease;
                 }
                 
-                select {
-                    background: rgba(255, 255, 255, 0.05);
-                }
-                
-                select:focus {
-                    outline: none;
-                    border-color: rgba(168, 85, 247, 0.5);
+                .nav-link:hover::after {
+                    width: 100%;
                 }
             </style>
-            <div class="generation-card rounded-xl p-6 mb-8">
-                <h2 class="text-2xl font-bold mb-6">Create Anything</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div>
-                        <label for="content-type" class="block text-sm font-medium mb-2">Content Type</label>
-                        <select id="content-type" class="w-full px-4 py-3 rounded-lg border border-gray-700 focus:border-purple-500 transition">
-                            <option value="image">Image</option>
-                            <option value="video">Video Script</option>
-                            <option value="script">Screenplay</option>
-                            <option value="prompt">Enhanced Prompt</option>
-                        </select>
+            <nav class="border-b border-gray-800 py-4">
+                <div class="container mx-auto px-4 flex justify-between items-center">
+                    <a href="/" class="flex items-center space-x-2">
+                        <i data-feather="zap" class="text-purple-500"></i>
+                        <span class="text-xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">OmniGenie</span>
+                    </a>
+                    
+                    <div class="hidden md:flex space-x-8">
+                        <a href="#" class="nav-link">Home</a>
+                        <a href="#" class="nav-link">Generate</a>
+                        <a href="#" class="nav-link">Gallery</a>
+                        <a href="#" class="nav-link">API</a>
+                        <a href="#" class="nav-link">About</a>
                     </div>
                     
-                    <div>
-                        <label for="style" class="block text-sm font-medium mb-2">Style</label>
-                        <select id="style" class="w-full px-4 py-3 rounded-lg border border-gray-700 focus:border-purple-500 transition">
-                            <option value="realistic">Realistic</option>
-                            <option value="fantasy">Fantasy</option>
-                            <option value="cyberpunk">Cyberpunk</option>
-                            <option value="anime">Anime</option>
-                            <option value="watercolor">Watercolor</option>
-                        </select>
+                    <div class="flex items-center space-x-4">
+                        <button class="p-2 rounded-full hover:bg-gray-800 transition">
+                            <i data-feather="moon"></i>
+                        </button>
+                        <button class="bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 rounded-lg font-medium hover:opacity-90 transition">
+                            Get Pro
+                        </button>
                     </div>
                 </div>
-                
-                <div class="mb-6">
-                    <label for="ai-prompt" class="block text-sm font-medium mb-2">Your Unlimited Prompt</label>
-                    <textarea id="ai-prompt" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-700 focus:border-purple-500 transition" placeholder="Describe what you want to create..."></textarea>
-                </div>
-                
-                <div class="flex justify-end">
-                    <button id="generate-btn" class="bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-3 rounded-lg font-medium hover:opacity-90 transition flex items-center space-x-2">
-                        <span>Generate</span>
-                        <i data-feather="arrow-right"></i>
-                    </button>
-                </div>
-            </div>
+            </nav>
         `;
     }
 }
 
-customElements.define('custom-ai-controls', CustomAiControls);
+customElements.define('custom-navbar', CustomNavbar);
