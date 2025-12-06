@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniGenie AI - Unlimited Creation</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+    <script src="components/navbar.js"></script>
+    <script src="components/ai-controls.js"></script>
+    <script src="components/output-display.js"></script>
+    
+    <custom-navbar></custom-navbar>
+    
+    <main class="container mx-auto px-4 py-8">
+        <section class="text-center mb-12">
+            <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">OmniGenie AI</h1>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto">Your unlimited creative companion for generating images, videos, scripts, and prompts without restrictions</p>
+        </section>
+
+        <custom-ai-controls></custom-ai-controls>
+        <custom-output-display></custom-output-display>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+        });
+    </script>
+</body>
+</html>
